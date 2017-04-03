@@ -22,6 +22,7 @@ bool Sht21::measureT(float &result) {
   if (!write(COMMAND_MEASURE_T_HOLD)) {
     return false;
   }
+  delay(85);
   uint16_t value;
   if (!read(value)) {
     return false;
@@ -34,6 +35,7 @@ bool Sht21::measureRH(float &result) {
   if (!write(COMMAND_MEASURE_RH_HOLD)) {
     return false;
   }
+  delay(29);
   uint16_t value;
   if (!read(value)) {
     return false;
@@ -58,7 +60,6 @@ bool Sht21::write(uint8_t cmd) {
 }
 
 bool Sht21::read(uint16_t &result) {
-  delay(85);
   const auto l = Wire.requestFrom(mAddr, (uint8_t)3);
   if (l != 3) {
     dprintf("Wire.requestFrom failed, len = %d\n", l);
