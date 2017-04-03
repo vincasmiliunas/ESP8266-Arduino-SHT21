@@ -1,7 +1,5 @@
 #include <SHT21.h>
 
-#define DEBUG 1
-
 Sht21 sht21;
 
 void setup() {
